@@ -1,0 +1,182 @@
+{
+  "Items": [
+    {
+      "id": "c0",
+      "position": {
+        "x": -4.0,
+        "y": 0.0
+      },
+      "type": 1,
+      "connections": [
+        "Ground"
+      ]
+    },
+    {
+      "id": "c1",
+      "position": {
+        "x": -3,
+        "y": -0.32
+      },
+      "type": 1,
+      "connections": [
+        "c0"
+      ]
+    },
+    {
+      "id": "c2",
+      "position": {
+        "x": -2,
+        "y": -0.66
+      },
+      "type": 1,
+      "connections": [
+        "c1"
+      ]
+    },
+    {
+      "id": "c3",
+      "position": {
+        "x": -1,
+        "y": -1
+      },
+      "type": 0,
+      "connections": [
+        "c2"
+      ]
+    },
+    {
+      "id": "c4",
+      "position": {
+        "x": 0.0,
+        "y": -1.25
+      },
+      "type": 0,
+      "connections": [
+        "c3",
+        "c8"
+      ]
+    },
+    {
+      "id": "c5",
+      "position": {
+        "x": 4.0,
+        "y": 0.0
+      },
+      "type": 2,
+      "connections": [
+        "Ground"
+      ]
+    },
+    {
+      "id": "c6",
+      "position": {
+        "x": 3,
+        "y": -0.32
+      },
+      "type": 2,
+      "connections": [
+        "c5"
+      ]
+    },
+    {
+      "id": "c7",
+      "position": {
+        "x": 2,
+        "y": -0.66
+      },
+      "type": 2,
+      "connections": [
+        "c6"
+      ]
+    },
+    {
+      "id": "c8",
+      "position": {
+        "x": 1,
+        "y": -1
+      },
+      "type": 0,
+      "connections": [
+        "c7"
+      ]
+    },
+
+
+    {
+      "id": "b0",
+      "position": {
+        "x": 0,
+        "y": 2
+      },
+      "type": 0,
+      "connections": [
+      ]
+    },
+    {
+      "id": "b1",
+      "position": {
+        "x": 1,
+        "y": 1
+      },
+      "type": 3,
+      "connections": [
+        "b0"
+      ]
+    },
+    {
+      "id": "b2",
+      "position": {
+        "x": -1,
+        "y": 1
+      },
+      "type": 3,
+      "connections": [
+        "b0"
+      ]
+    },
+    {
+      "id": "b3",
+      "position": {
+        "x": 1,
+        "y": 3
+      },
+      "type": 3,
+      "connections": [
+        "b0"
+      ]
+    },
+    {
+      "id": "b4",
+      "position": {
+        "x": -1,
+        "y": 3
+      },
+      "type": 3,
+      "connections": [
+        "b0"
+      ]
+    },
+    {
+      "id": "b5",
+      "position": {
+        "x": 1,
+        "y": 2
+      },
+      "type": 3,
+      "connections": [
+        "b0"
+      ]
+    },
+    {
+      "id": "b6",
+      "position": {
+        "x": -1,
+        "y": 2
+      },
+      "type": 3,
+      "connections": [
+        "b0"
+      ]
+    }
+  ]
+}
