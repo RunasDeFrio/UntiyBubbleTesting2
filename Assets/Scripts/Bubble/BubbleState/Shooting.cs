@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
@@ -14,6 +12,8 @@ public class Shooting : MonoBehaviour
     //начальная позиция и позиция натяжения
     private Vector2 _startPos;
     private Vector2 _tensionPos;
+
+    private bool _isTouch = false;
 
     /// <summary>
     /// Родительский класс пузырька.
@@ -44,21 +44,38 @@ public class Shooting : MonoBehaviour
         _startPos = Bubble.RigidBody.position;
     }
 
+    private void Update()
+    {
+        if(_isTouch)
+            SetBubblePosition(_camera.ScreenToWorldPoint(Input.mousePosition));
+    }
+
 
     private void OnMouseDrag()
     {
-        _tensionPos = _camera.ScreenToWorldPoint(Input.mousePosition);
-        if ((_startPos - _tensionPos).sqrMagnitude < shootInfo.maxAimingRadius * shootInfo.maxAimingRadius)
-        {
-            Bubble.RigidBody.MovePosition(_tensionPos);
-            Aiming?.Invoke(_tensionPos,
-                           shootInfo.maxStartVelocity / shootInfo.maxAimingRadius * (_startPos - _tensionPos),
-                           Bubble.Collider.radius * _tr.localScale.x);
-        }
+        _isTouch = true;
+        SetBubblePosition(_camera.ScreenToWorldPoint(Input.mousePosition));
+    }
+
+    /// <summary>
+    /// Устанавить позицию 
+    /// </summary>
+    private void SetBubblePosition(Vector2 tensionPos)
+    {
+        //Ограничение позиции натяжения
+        _tensionPos = _startPos - Vector2.ClampMagnitude(_startPos - tensionPos, shootInfo.maxAimingRadius);
+
+        
+        Bubble.RigidBody.MovePosition(_tensionPos);
+        //Отправляем параметры прицеливания
+        Aiming?.Invoke(_tensionPos,
+                       shootInfo.maxStartVelocity / shootInfo.maxAimingRadius * (_startPos - _tensionPos),
+                       Bubble.Collider.radius * _tr.localScale.x);
     }
 
     private void OnMouseUp()
     {
+        _isTouch = false;
         var velocity =  (_startPos - _tensionPos)/ shootInfo.maxAimingRadius;
 
         bool isMaxVelocity = velocity.sqrMagnitude >= 0.9;
